@@ -2,10 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Orbit, Library, Zap, Cpu, Radio } from "lucide-react";
+import { Orbit, Library, Zap, Cpu, Radio, ArrowRight } from "lucide-react";
 import { useLenis } from "@/components/providers/SmoothScrollProvider";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { id: "hero", icon: Orbit, label: "00_ORIGIN", tooltip: "Origin" },
@@ -16,8 +15,6 @@ const NAV_ITEMS = [
 ] as const;
 
 type SectionId = (typeof NAV_ITEMS)[number]["id"];
-
-const ELECTRIC = "#00FFB2";
 
 function useScrollSpy(ids: readonly string[]) {
   const [active, setActive] = useState<string>(ids[0]);
@@ -175,49 +172,10 @@ function DockIcon({
   );
 }
 
-function BrandTab({
-  label,
-  href,
-  isActive,
-  accentColor,
-}: {
-  label: string;
-  href: string;
-  isActive: boolean;
-  accentColor: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="group relative flex w-full items-center justify-center py-2.5 transition-all duration-300"
-    >
-      {isActive && (
-        <motion.div
-          layoutId="brand-indicator"
-          className="absolute inset-x-1 inset-y-0.5 rounded-md"
-          style={{ backgroundColor: `${accentColor}10` }}
-          transition={{ type: "spring", stiffness: 400, damping: 30 }}
-        />
-      )}
-      <span
-        className="relative z-10 font-mono text-[6px] font-bold tracking-[0.15em] transition-colors duration-300"
-        style={{
-          color: isActive ? accentColor : "rgba(255,255,255,0.2)",
-        }}
-      >
-        {label}
-      </span>
-    </Link>
-  );
-}
-
 export function CommandCenter() {
   const lenis = useLenis();
-  const pathname = usePathname();
   const [powered, setPowered] = useState(false);
   const bootTimer = useRef<ReturnType<typeof setTimeout>>(null);
-
-  const isFoundations = pathname === "/foundations";
 
   const sectionIds = NAV_ITEMS.map((n) => n.id);
   const activeId = useScrollSpy(sectionIds);
@@ -249,54 +207,42 @@ export function CommandCenter() {
       initial={{ opacity: 0, x: -20 }}
       animate={powered ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-      className="fixed left-0 top-0 z-40 hidden h-screen w-14 flex-col items-center border-r bg-attune-void/80 backdrop-blur-sm lg:flex"
-      style={{
-        borderColor: isFoundations
-          ? `${ELECTRIC}12`
-          : "rgba(0,255,148,0.08)",
-      }}
+      className="fixed left-0 top-0 z-40 hidden h-screen w-14 flex-col items-center border-r border-attune-green/8 bg-attune-void/80 backdrop-blur-sm lg:flex"
     >
-      {/* ── Brand Switcher ── */}
-      <div className="flex w-full flex-col border-b border-white/5">
-        <BrandTab
-          label="UNIVERSE"
-          href="/"
-          isActive={!isFoundations}
-          accentColor="#00FF94"
-        />
-        <BrandTab
-          label="FOUNDATIONS"
-          href="/foundations"
-          isActive={isFoundations}
-          accentColor={ELECTRIC}
+      {/* Boot indicator */}
+      <div className="flex h-14 w-full items-center justify-center border-b border-white/5">
+        <motion.div
+          animate={powered ? { scale: [0, 1.3, 1], opacity: 1 } : { scale: 0, opacity: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="size-1.5 rounded-full bg-attune-green shadow-[0_0_8px_rgba(0,255,148,0.6)]"
         />
       </div>
 
       {/* Navigation icons */}
-      {!isFoundations && (
-        <div className="flex flex-1 flex-col items-center justify-center gap-3">
-          {NAV_ITEMS.map((item) => (
-            <NavIcon
-              key={item.id}
-              item={item}
-              isActive={activeId === item.id}
-              onClick={() => scrollTo(item.id)}
-            />
-          ))}
-        </div>
-      )}
-
-      {isFoundations && (
-        <div className="flex flex-1 flex-col items-center justify-center">
-          <div
-            className="size-1.5 rounded-full"
-            style={{
-              backgroundColor: ELECTRIC,
-              boxShadow: `0 0 8px ${ELECTRIC}80`,
-            }}
+      <div className="flex flex-1 flex-col items-center justify-center gap-3">
+        {NAV_ITEMS.map((item) => (
+          <NavIcon
+            key={item.id}
+            item={item}
+            isActive={activeId === item.id}
+            onClick={() => scrollTo(item.id)}
           />
-        </div>
-      )}
+        ))}
+      </div>
+
+      {/* Foundations CTA */}
+      <div className="flex flex-col items-center gap-2 pb-4">
+        <Link
+          href="/foundations"
+          className="group relative flex size-10 items-center justify-center rounded-md border border-attune-green/20 bg-attune-green/5 transition-all duration-300 hover:border-attune-green/40 hover:bg-attune-green/10 hover:shadow-[0_0_20px_rgba(0,255,148,0.15)]"
+          aria-label="Foundations Course"
+        >
+          <ArrowRight className="size-[18px] text-attune-green/70 transition-colors duration-300 group-hover:text-attune-green" />
+        </Link>
+        <span className="font-mono text-[7px] tracking-widest text-attune-green/40">
+          START
+        </span>
+      </div>
     </motion.nav>
   );
 
@@ -306,48 +252,21 @@ export function CommandCenter() {
       initial={{ y: 60, opacity: 0 }}
       animate={powered ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-      className="fixed inset-x-0 bottom-0 z-40 flex flex-col border-t border-white/8 pb-[env(safe-area-inset-bottom)] lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 flex border-t border-white/8 pb-[env(safe-area-inset-bottom)] lg:hidden"
       style={{
         background: "rgba(5, 5, 5, 0.55)",
         backdropFilter: "blur(40px) saturate(180%)",
         WebkitBackdropFilter: "blur(40px) saturate(180%)",
       }}
     >
-      {/* Mobile brand tabs */}
-      <div className="flex border-b border-white/5">
-        <Link
-          href="/"
-          className="flex flex-1 items-center justify-center py-2 font-mono text-[7px] tracking-[0.15em] transition-colors"
-          style={{
-            color: !isFoundations ? "#00FF94" : "rgba(255,255,255,0.2)",
-          }}
-        >
-          UNIVERSE
-        </Link>
-        <Link
-          href="/foundations"
-          className="flex flex-1 items-center justify-center py-2 font-mono text-[7px] tracking-[0.15em] transition-colors"
-          style={{
-            color: isFoundations ? ELECTRIC : "rgba(255,255,255,0.2)",
-          }}
-        >
-          FOUNDATIONS
-        </Link>
-      </div>
-
-      {/* Section nav only on homepage */}
-      {!isFoundations && (
-        <div className="flex">
-          {NAV_ITEMS.map((item) => (
-            <DockIcon
-              key={item.id}
-              item={item}
-              isActive={activeId === item.id}
-              onClick={() => scrollTo(item.id)}
-            />
-          ))}
-        </div>
-      )}
+      {NAV_ITEMS.map((item) => (
+        <DockIcon
+          key={item.id}
+          item={item}
+          isActive={activeId === item.id}
+          onClick={() => scrollTo(item.id)}
+        />
+      ))}
     </motion.nav>
   );
 
