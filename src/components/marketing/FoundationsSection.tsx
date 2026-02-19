@@ -244,7 +244,7 @@ export function FoundationsSection() {
                   className="gap-2 bg-attune-green px-8 text-base font-bold text-attune-void shadow-[0_0_30px_rgba(0,255,148,0.35)] transition-all duration-300 hover:bg-attune-green/90 hover:shadow-[0_0_50px_rgba(0,255,148,0.5)]"
                 >
                   <Link href="/foundations">
-                    SECURE ACCESS
+                    ENTER THE ECOSYSTEM
                     <ArrowRight className="size-5" />
                   </Link>
                 </Button>

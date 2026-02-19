@@ -180,7 +180,7 @@ export function Hero() {
                   className="w-full bg-attune-green font-semibold text-attune-void shadow-[0_0_24px_rgba(0,255,148,0.3)] transition-all duration-300 hover:bg-attune-green/90 hover:shadow-[0_0_36px_rgba(0,255,148,0.45)]"
                 >
                   <Link href="/foundations">
-                    START HERE
+                    INITIALIZE FOUNDATIONS
                     <ArrowRight className="size-4" />
                   </Link>
                 </Button>
