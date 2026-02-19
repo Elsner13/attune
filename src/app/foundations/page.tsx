@@ -19,6 +19,7 @@ import Link from "next/link";
 
 /* ─── Electric Green — sister-brand accent ─── */
 const ELECTRIC = "#00FFB2";
+const CHECKOUT_URL = "https://buy.stripe.com/3cIcN5fCp1CR0qz2RBefC04";
 
 const stagger: Variants = {
   hidden: {},
@@ -127,6 +128,26 @@ export default function FoundationsPage() {
   return (
     <main className="relative min-h-screen bg-attune-void text-attune-starlight">
       {/* ════════════════════════════
+          TOP NAV BAR
+          ════════════════════════════ */}
+      <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-white/[0.04] px-6 py-3 backdrop-blur-md sm:px-10 lg:px-16" style={{ background: "rgba(0,0,0,0.6)" }}>
+        <Link href="/" className="group flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-attune-starlight/40 transition-colors duration-300 hover:text-attune-starlight/80">
+          <ArrowRight className="size-3 rotate-180 transition-transform duration-300 group-hover:-translate-x-0.5" />
+          Attune Universe
+        </Link>
+        <Button
+          asChild
+          size="sm"
+          className="gap-1.5 text-xs font-bold text-attune-void"
+          style={{ backgroundColor: ELECTRIC }}
+        >
+          <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+            ENROLL — $97
+          </a>
+        </Button>
+      </nav>
+
+      {/* ════════════════════════════
           HERO
           ════════════════════════════ */}
       <section className="relative overflow-hidden">
@@ -187,7 +208,7 @@ export default function FoundationsPage() {
                 boxShadow: `0 0 30px ${ELECTRIC}50`,
               }}
             >
-              <a href="#pricing">
+              <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
                 INITIALIZE FOUNDATIONS — $97
                 <ArrowRight className="size-5" />
               </a>
@@ -589,6 +610,7 @@ export default function FoundationsPage() {
 
                 {/* CTA */}
                 <Button
+                  asChild
                   size="lg"
                   className="w-full max-w-sm gap-2.5 py-7 text-lg font-black text-attune-void transition-all duration-300"
                   style={{
@@ -596,8 +618,10 @@ export default function FoundationsPage() {
                     boxShadow: `0 0 40px ${ELECTRIC}50`,
                   }}
                 >
-                  INITIALIZE FOUNDATIONS
-                  <ArrowRight className="size-5" />
+                  <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+                    INITIALIZE FOUNDATIONS
+                    <ArrowRight className="size-5" />
+                  </a>
                 </Button>
 
                 {/* Trust */}
@@ -671,7 +695,7 @@ export default function FoundationsPage() {
                 boxShadow: `0 0 30px ${ELECTRIC}45`,
               }}
             >
-              <a href="#pricing">
+              <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
                 INITIALIZE FOUNDATIONS — $97
                 <ArrowRight className="size-5" />
               </a>
@@ -688,16 +712,10 @@ export default function FoundationsPage() {
       <div className="pb-12 text-center">
         <Link
           href="/"
-          className="font-mono text-[10px] uppercase tracking-[0.2em] text-attune-starlight/15 transition-colors duration-300"
-          style={{ ["--hover-color" as string]: ELECTRIC }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.color = `${ELECTRIC}80`;
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.color = "";
-          }}
+          className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-attune-starlight/30 transition-colors duration-300 hover:text-attune-starlight/70"
         >
-          ← Back to Attune Universe
+          <ArrowRight className="size-3 rotate-180" />
+          Back to Attune Universe
         </Link>
       </div>
     </main>
