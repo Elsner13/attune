@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #000000;
+  --color-crimson: #CC1133;
+  --color-crimson-hover: #FF1A3E;
+  --color-crimson-press: #AA0F28;
+  --color-headline: #F0F0F0;
+  --color-body: #888888;
+  --color-muted: #555555;
+  --color-ghost: #333333;
+  --color-divider: #1a1a1a;
+  --color-surface: #080001;
+  --color-lift: #0a0002;
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+
+  --animate-fade-headline: fade-headline 1.4s ease-out 0.3s both;
+}
+
+@keyframes fade-headline {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #000000;
+}
+
+body {
+  background: transparent;
+  color: #F0F0F0;
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typographic quote marks for hero headline */
+.typo-quote::before {
+  content: '\201C';
+}
+.typo-quote::after {
+  content: '\201D';
+}
