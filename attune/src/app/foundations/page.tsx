@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { TubelightNav } from '@/components/TubelightNav'
 
-const STRIPE_URL = 'https://buy.stripe.com/3cIcN5fCp1CR0qz2RBefC04'
+const STRIPE_URL = 'https://buy.stripe.com/6oUaEX75TftH4GP77RefC06'
 
 export default function FoundationsPage() {
   return (
