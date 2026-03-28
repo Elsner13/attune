@@ -1,76 +1,63 @@
-import BottomNav from '@/components/BottomNav'
-import EmailCapture from '@/components/EmailCapture'
+import Image from 'next/image'
+import { TubelightNav } from '@/components/TubelightNav'
 
 export default function Home() {
   return (
-    <>
-      <main
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: '#ffffff',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div
         style={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '80px 24px 100px',
-          maxWidth: '480px',
-          margin: '0 auto',
-          textAlign: 'center',
+          position: 'relative',
+          width: 'min(380px, 32vw)',
+          aspectRatio: '1 / 1',
+          marginBottom: '24px',
         }}
       >
-        {/* Eyebrow */}
-        <span
-          style={{
-            display: 'block',
-            fontFamily: 'var(--font-inter)',
-            fontSize: '10px',
-            fontWeight: 400,
-            textTransform: 'uppercase',
-            letterSpacing: '0.2em',
-            color: '#555555',
-            marginBottom: '32px',
-          }}
-        >
-          Sam Elsner
-        </span>
+        <Image src="/attune-logo.png" alt="Attune" fill style={{ objectFit: 'contain' }} priority />
+      </div>
 
-        {/* Hero headline */}
-        <h1
-          className="animate-fade-headline"
-          style={{
-            fontFamily: 'var(--font-playfair)',
-            fontSize: 'clamp(40px, 7vw, 88px)',
-            fontWeight: 400,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.1,
-            color: '#F0F0F0',
-            marginBottom: '32px',
-          }}
-        >
-          <span className="typo-quote">
-            You were never behind. You were in the wrong environment.
-          </span>
-        </h1>
+      <p
+        style={{
+          fontFamily: 'var(--font-montserrat-alternates)',
+          fontSize: 'clamp(12px, 1.4vw, 24px)',
+          fontWeight: 400,
+          letterSpacing: '0.02em',
+          color: '#000000',
+          textAlign: 'center',
+          textTransform: 'uppercase',
+          margin: '0 0 12px',
+        }}
+      >
+        Skill is forged, not taught.
+      </p>
 
-        {/* Subline */}
-        <p
-          style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: '15px',
-            fontWeight: 400,
-            lineHeight: 1.85,
-            color: '#888888',
-            marginBottom: '40px',
-            maxWidth: '420px',
-          }}
-        >
-          Attune is a practice. Not a program.
-        </p>
+      <p
+        style={{
+          fontFamily: 'var(--font-montserrat-alternates)',
+          fontSize: 'clamp(10px, 1vw, 16px)',
+          fontWeight: 400,
+          color: '#555555',
+          textAlign: 'center',
+          letterSpacing: '0.01em',
+          margin: '0 0 32px',
+          maxWidth: '460px',
+        }}
+      >
+        Attune is a practice. Not a program.
+      </p>
 
-        {/* Email capture */}
-        <EmailCapture />
-      </main>
+      <div style={{ height: 'clamp(36px, 3vw, 42px)' }} />
 
-      <BottomNav />
-    </>
+      <TubelightNav />
+    </div>
   )
 }
