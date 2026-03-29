@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { playfair, inter, montserratAlternates } from '@/lib/fonts'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { DottedSurface } from '@/components/ui/dotted-surface'
+import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -17,10 +18,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
       </head>
       <body>
-        <ThemeProvider>
-          <DottedSurface />
-          {children}
-        </ThemeProvider>
+        <ClerkProvider>
+          <ThemeProvider>
+            <DottedSurface />
+            {children}
+          </ThemeProvider>
+        </ClerkProvider>
       </body>
     </html>
   )
