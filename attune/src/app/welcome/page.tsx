@@ -73,13 +73,20 @@ export default function WelcomePage() {
               borderRadius: '2px',
             },
             elements: {
-              rootBox: { fontFamily: 'var(--font-montserrat-alternates)', width: '100%', colorScheme: 'light' },
+              rootBox: {
+                fontFamily: 'var(--font-montserrat-alternates)',
+                width: '100%',
+                colorScheme: 'light',
+                display: 'flex',
+                justifyContent: 'center',
+              },
               card: {
                 boxShadow: 'none',
                 border: '1px solid rgba(0,0,0,0.12)',
                 borderRadius: '4px',
                 background: '#ffffff',
                 width: '100%',
+                margin: '0 auto',
               },
               headerTitle: { display: 'none' },
               headerSubtitle: { display: 'none' },
