@@ -144,6 +144,12 @@ export default function WelcomePage() {
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <SignUp
               appearance={{
+                variables: {
+                  colorPrimary: '#000000',
+                  colorDanger: '#CC1133',
+                  fontFamily: 'var(--font-montserrat-alternates)',
+                  borderRadius: '2px',
+                },
                 elements: {
                   rootBox: { fontFamily: 'var(--font-montserrat-alternates)', width: '100%' },
                   card: {
@@ -155,10 +161,34 @@ export default function WelcomePage() {
                   },
                   headerTitle: { display: 'none' },
                   headerSubtitle: { display: 'none' },
+                  formFieldLabel: {
+                    fontSize: '10px',
+                    fontWeight: '600',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    color: '#555555',
+                  },
+                  formFieldInput: {
+                    borderRadius: '2px',
+                    border: '1px solid rgba(0,0,0,0.2)',
+                  },
                   socialButtonsBlockButton: {
                     border: '1px solid rgba(0,0,0,0.15)',
                     borderRadius: '2px',
                     color: '#000000',
+                  },
+                  socialButtonsBlockButtonText: {
+                    fontSize: '11px',
+                    letterSpacing: '0.04em',
+                  },
+                  dividerLine: {
+                    borderColor: 'rgba(0,0,0,0.10)',
+                  },
+                  dividerText: {
+                    fontSize: '9px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.12em',
+                    color: '#bbbbbb',
                   },
                   formButtonPrimary: {
                     background: '#000000',
@@ -168,11 +198,11 @@ export default function WelcomePage() {
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                   },
-                  footerActionLink: { color: '#000000' },
-                  formFieldInput: {
-                    borderRadius: '2px',
-                    border: '1px solid rgba(0,0,0,0.2)',
+                  footerActionText: {
+                    fontSize: '11px',
+                    color: '#999999',
                   },
+                  footerActionLink: { color: '#000000' },
                 },
               }}
               forceRedirectUrl="/dashboard"
