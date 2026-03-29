@@ -147,7 +147,6 @@ export default function WelcomePage() {
                 variables: {
                   colorPrimary: '#000000',
                   colorDanger: '#CC1133',
-                  fontFamily: 'var(--font-montserrat-alternates)',
                   borderRadius: '2px',
                 },
                 elements: {
