@@ -9,9 +9,7 @@ export default function WelcomePage() {
         inset: 0,
         background: '#ffffff',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '24px',
+        flexDirection: 'column',
         overflowY: 'auto',
       }}
     >
@@ -20,9 +18,12 @@ export default function WelcomePage() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          textAlign: 'center',
           gap: '24px',
           width: '100%',
           maxWidth: '480px',
+          margin: 'auto',
+          padding: '24px',
         }}
       >
         {/* Logo */}
