@@ -147,10 +147,15 @@ export default function WelcomePage() {
                 variables: {
                   colorPrimary: '#000000',
                   colorDanger: '#CC1133',
+                  colorBackground: '#ffffff',
+                  colorInputBackground: '#ffffff',
+                  colorText: '#000000',
+                  colorInputText: '#000000',
+                  colorTextSecondary: '#555555',
                   borderRadius: '2px',
                 },
                 elements: {
-                  rootBox: { fontFamily: 'var(--font-montserrat-alternates)', width: '100%' },
+                  rootBox: { fontFamily: 'var(--font-montserrat-alternates)', width: '100%', colorScheme: 'light' },
                   card: {
                     boxShadow: 'none',
                     border: '1px solid rgba(0,0,0,0.12)',
@@ -170,6 +175,8 @@ export default function WelcomePage() {
                   formFieldInput: {
                     borderRadius: '2px',
                     border: '1px solid rgba(0,0,0,0.2)',
+                    background: '#ffffff',
+                    color: '#000000',
                   },
                   socialButtonsBlockButton: {
                     border: '1px solid rgba(0,0,0,0.15)',
