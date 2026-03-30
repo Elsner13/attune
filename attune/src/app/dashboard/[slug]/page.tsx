@@ -142,7 +142,22 @@ export default async function ModulePage({ params }: Props) {
                 {paragraph}
               </p>
             ))}
-            {/* Inline animation — appears after section 2 of each module */}
+            {/* Inline animation — sIdx 0: intro concept */}
+            {sIdx === 0 && (
+              <div style={{ marginTop: '32px' }}>
+                <ModuleInline slug={slug} id={
+                  slug === 'module-1' ? 'effort-rut' :
+                  slug === 'module-2' ? 'expert-perception' :
+                  slug === 'module-3' ? 'feedback-loop' :
+                  slug === 'module-4' ? 'three-constraints' :
+                  slug === 'module-5' ? 'adaptive-capacity' :
+                  slug === 'module-6' ? 'the-bowl' :
+                  slug === 'module-7' ? 'fidelity-spectrum' :
+                  slug === 'module-8' ? 'pattern-detect' : ''
+                } />
+              </div>
+            )}
+            {/* Inline animation — sIdx 2: core mechanism */}
             {sIdx === 2 && (
               <div style={{ marginTop: '32px' }}>
                 <ModuleInline slug={slug} id={
@@ -154,6 +169,21 @@ export default async function ModulePage({ params }: Props) {
                   slug === 'module-6' ? 'four-variables' :
                   slug === 'module-7' ? 'perception-action' :
                   slug === 'module-8' ? 'before-after' : ''
+                } />
+              </div>
+            )}
+            {/* Inline animation — sIdx 4: deeper application */}
+            {sIdx === 4 && (
+              <div style={{ marginTop: '32px' }}>
+                <ModuleInline slug={slug} id={
+                  slug === 'module-1' ? 'bottleneck-chain' :
+                  slug === 'module-2' ? 's-curve' :
+                  slug === 'module-3' ? 'affordance-shift' :
+                  slug === 'module-4' ? 'collapse-sequence' :
+                  slug === 'module-5' ? 'blocked-vs-random' :
+                  slug === 'module-6' ? 'parameter-sliders' :
+                  slug === 'module-7' ? 'transfer-gap' :
+                  slug === 'module-8' ? 'perceptual-change' : ''
                 } />
               </div>
             )}
