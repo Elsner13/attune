@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 interface CompleteButtonProps {
   slug: string
@@ -13,11 +14,15 @@ export default function CompleteButton({ slug, isCompleted, nextSlug }: Complete
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(isCompleted)
+  const isMobile = useIsMobile()
+
+  const mobileFullWidth = isMobile
+    ? { width: '100%' as const, boxSizing: 'border-box' as const }
+    : {}
 
   async function handleComplete() {
     if (done || loading) return
     setLoading(true)
-
     try {
       await fetch('/api/complete-module', {
         method: 'POST',
@@ -41,7 +46,7 @@ export default function CompleteButton({ slug, isCompleted, nextSlug }: Complete
 
   if (done) {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', width: isMobile ? '100%' : 'auto' }}>
         <div
           style={{
             display: 'flex',
@@ -95,6 +100,7 @@ export default function CompleteButton({ slug, isCompleted, nextSlug }: Complete
               background: 'transparent',
               padding: '10px 28px',
               cursor: 'pointer',
+              ...mobileFullWidth,
             }}
           >
             Next Module →
@@ -116,6 +122,7 @@ export default function CompleteButton({ slug, isCompleted, nextSlug }: Complete
               background: 'transparent',
               padding: '10px 28px',
               cursor: 'pointer',
+              ...mobileFullWidth,
             }}
           >
             Back to Dashboard
@@ -141,6 +148,7 @@ export default function CompleteButton({ slug, isCompleted, nextSlug }: Complete
         padding: '10px 28px',
         cursor: loading ? 'not-allowed' : 'pointer',
         transition: 'all 150ms',
+        ...mobileFullWidth,
       }}
     >
       {loading ? 'Saving...' : 'Mark Complete'}
