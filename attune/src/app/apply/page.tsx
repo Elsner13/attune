@@ -1,73 +1,88 @@
-import TopNav from '@/components/TopNav'
-import Footer from '@/components/Footer'
+import Image from 'next/image'
+import Link from 'next/link'
+import { TubelightNav } from '@/components/TubelightNav'
+import ApplyForm from './ApplyForm'
+
+const fontBase = 'var(--font-montserrat-alternates)'
 
 export default function ApplyPage() {
   return (
-    <>
-      <TopNav />
-
-      <main
+    <div
+      style={{
+        background: '#ffffff',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: 'clamp(48px, 8vw, 100px) clamp(24px, 6vw, 80px) clamp(100px, 14vw, 160px)',
+      }}
+    >
+      {/* Logo */}
+      <Link
+        href="/"
         style={{
-          maxWidth: '1100px',
-          margin: '0 auto',
-          padding: 'clamp(80px, 12vw, 160px) clamp(24px, 6vw, 120px)',
+          position: 'relative',
+          width: 'min(140px, 14vw)',
+          aspectRatio: '1 / 1',
+          marginBottom: '56px',
+          display: 'block',
         }}
       >
+        <Image src="/attune-logo.png" alt="Attune" fill style={{ objectFit: 'contain' }} priority />
+      </Link>
+
+      <div style={{ maxWidth: '520px', width: '100%' }}>
+        {/* Headline */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: '15px',
-            lineHeight: 1.85,
-            color: '#888888',
-            maxWidth: '560px',
-            marginBottom: '48px',
+            fontFamily: fontBase,
+            fontSize: 'clamp(12px, 1.4vw, 22px)',
+            fontWeight: 400,
+            letterSpacing: '0.02em',
+            color: '#000000',
+            textTransform: 'uppercase',
+            margin: '0 0 18px',
           }}
         >
-          The decision is made. This form is just the beginning of a conversation.
-          Answer honestly. There are no right answers, only useful ones.
+          Before we talk.
         </p>
 
-        {/* Application form — stubbed */}
-        <div
-          style={{
-            maxWidth: '560px',
-            marginBottom: '48px',
-            padding: '40px',
-            border: '1px solid #1a1a1a',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            minHeight: '300px',
-          }}
-        >
-          <p
-            style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: '12px',
-              color: '#333333',
-              textAlign: 'center',
-              letterSpacing: '0.05em',
-            }}
-          >
-            Application form loading...
-          </p>
-        </div>
-
+        {/* Pre-form qualifier */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: '15px',
-            lineHeight: 1.85,
-            color: '#888888',
-            maxWidth: '420px',
+            fontFamily: fontBase,
+            fontSize: 'clamp(10px, 1vw, 15px)',
+            fontWeight: 400,
+            color: '#555555',
+            lineHeight: 1.9,
+            letterSpacing: '0.01em',
+            margin: '0 0 52px',
           }}
         >
-          I read every application. If yours is a fit, I will be in touch within a
-          week.
+          Ten spots. Not a marketing line — that&apos;s genuinely what I can hold
+          and do real work inside of. This form tells me if we&apos;re a fit.
+          Answer honestly. I&apos;d rather know now than find out later.
         </p>
-      </main>
 
-      <Footer />
-    </>
+        {/* Form */}
+        <ApplyForm />
+
+        {/* Footer note */}
+        <p
+          style={{
+            fontFamily: fontBase,
+            fontSize: '11px',
+            letterSpacing: '0.06em',
+            color: '#aaaaaa',
+            textTransform: 'uppercase',
+            marginTop: '40px',
+          }}
+        >
+          I read every application personally.
+        </p>
+      </div>
+
+      <TubelightNav />
+    </div>
   )
 }
