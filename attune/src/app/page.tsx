@@ -1,5 +1,8 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { TubelightNav } from '@/components/TubelightNav'
+
+const STRIPE_URL = 'https://buy.stripe.com/6oUaEX75TftH4GP77RefC06'
 
 export default function Home() {
   return (
@@ -37,7 +40,7 @@ export default function Home() {
           margin: '0 0 12px',
         }}
       >
-        Skill is forged, not taught.
+        You&apos;re not broken. The conditions are.
       </p>
 
       <p
@@ -49,13 +52,47 @@ export default function Home() {
           textAlign: 'center',
           letterSpacing: '0.01em',
           margin: '0 0 32px',
-          maxWidth: '460px',
+          maxWidth: '500px',
         }}
       >
-        Attune is a practice. Not a program.
+        Most people fix the wrong thing. More discipline. Better habits. More reps.
+        The environment stays the same. The results stay the same.
+        Skill doesn&apos;t live inside you — it lives in the relationship between
+        you and how you practice. Fix that, and everything changes.
       </p>
 
-      <div style={{ height: 'clamp(36px, 3vw, 42px)' }} />
+      <a
+        href={STRIPE_URL}
+        style={{
+          fontFamily: 'var(--font-montserrat-alternates)',
+          fontSize: 'clamp(10px, 1vw, 14px)',
+          fontWeight: 400,
+          textTransform: 'uppercase',
+          letterSpacing: '0.12em',
+          color: '#000000',
+          textDecoration: 'none',
+          border: '1px solid #000000',
+          padding: '10px 28px',
+        }}
+      >
+        Start with Foundations — $197
+      </a>
+
+      <Link
+        href="/coaching"
+        style={{
+          fontFamily: 'var(--font-montserrat-alternates)',
+          fontSize: 'clamp(9px, 0.85vw, 12px)',
+          fontWeight: 400,
+          textTransform: 'uppercase',
+          letterSpacing: '0.12em',
+          color: '#aaaaaa',
+          textDecoration: 'none',
+          marginTop: '16px',
+        }}
+      >
+        Or work with me directly →
+      </Link>
 
       <TubelightNav />
     </div>
