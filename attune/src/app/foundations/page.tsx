@@ -2,6 +2,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { TubelightNav } from '@/components/TubelightNav'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Foundations — The Skill Development Course',
+  description:
+    'Foundations is an 8-module course on the operating system behind skill development. Learn why deliberate practice fails for most people, how to diagnose your plateau, and how to improve faster.',
+  openGraph: {
+    title: 'Foundations — The Skill Development Course | Attune',
+    description:
+      'An 8-module course on why most practice fails and how to break through skill plateaus. Deliberate practice, performance foundations, and real improvement.',
+  },
+}
+
 const STRIPE_URL = 'https://buy.stripe.com/6oUaEX75TftH4GP77RefC06'
 
 export default function FoundationsPage() {

@@ -2,6 +2,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { TubelightNav } from '@/components/TubelightNav'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "You're Not Behind. You're in the Wrong Environment.",
+  description:
+    'Attune helps high-effort learners break through skill plateaus. If you are putting in the work but not seeing results, the problem is not effort — it is the conditions. Learn how to change them.',
+  openGraph: {
+    title: "You're Not Behind. You're in the Wrong Environment.",
+    description:
+      'Attune helps high-effort learners break through skill plateaus. If you are putting in the work but not seeing results, the problem is not effort — it is the conditions.',
+  },
+}
+
 const STRIPE_URL = 'https://buy.stripe.com/6oUaEX75TftH4GP77RefC06'
 
 export default function Home() {

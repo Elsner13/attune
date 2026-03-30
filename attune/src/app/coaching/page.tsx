@@ -2,6 +2,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { TubelightNav } from '@/components/TubelightNav'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: '1-on-1 Performance Coaching',
+  description:
+    'Work directly with Attune for personalized performance coaching. Designed for people who are stuck at the same skill level despite hard work — and need someone to identify exactly what is holding them back.',
+  openGraph: {
+    title: '1-on-1 Performance Coaching | Attune',
+    description:
+      'Personalized coaching for skill development. If you have tried everything and are still not improving, this is for you.',
+  },
+}
+
 // TODO: replace with your Telegram username
 const TELEGRAM_URL = 'https://t.me/+16128453855'
 

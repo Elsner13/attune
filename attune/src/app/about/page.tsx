@@ -2,6 +2,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { TubelightNav } from '@/components/TubelightNav'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'Attune was built by someone obsessed with how humans get better — not a guru or system-seller, just someone who ran too many experiments on himself and had to share what actually works.',
+  openGraph: {
+    title: 'About Attune',
+    description:
+      'Not a guru. Not a system-seller. Just someone obsessed with how humans get better and what actually drives skill development.',
+  },
+}
+
 export default function AboutPage() {
   return (
     <div style={{ position: 'fixed', inset: 0, background: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
