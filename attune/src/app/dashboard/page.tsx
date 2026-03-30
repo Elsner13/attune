@@ -121,7 +121,7 @@ export default async function DashboardPage() {
                     fontSize: '10px',
                     color: '#cccccc',
                     minWidth: '18px',
-                    letterSpacing: '0.04em',
+                    letterSpacing: '0.06em',
                   }}
                 >
                   {mod.num}
