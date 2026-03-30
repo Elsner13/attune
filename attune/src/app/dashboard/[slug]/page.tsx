@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import { currentUser } from '@clerk/nextjs/server'
 import { getModule, getNextModule } from '@/lib/modules'
 import CompleteButton from './CompleteButton'
+import ModuleHero from '@/components/modules/ModuleHero'
+import ModuleInline from '@/components/modules/ModuleInline'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -93,6 +95,9 @@ export default async function ModulePage({ params }: Props) {
           {mod.subtitle}
         </p>
 
+        {/* Module hero animation */}
+        <ModuleHero slug={slug} />
+
         {/* Divider */}
         <div
           style={{
@@ -104,7 +109,7 @@ export default async function ModulePage({ params }: Props) {
         />
 
         {/* Content sections */}
-        {mod.sections.map((section) => (
+        {mod.sections.map((section, sIdx) => (
           <div key={section.heading} style={{ marginBottom: '40px' }}>
             <h2
               style={{
@@ -133,6 +138,21 @@ export default async function ModulePage({ params }: Props) {
                 {paragraph}
               </p>
             ))}
+            {/* Inline animation — appears after section 2 of each module */}
+            {sIdx === 2 && (
+              <div style={{ marginTop: '32px' }}>
+                <ModuleInline slug={slug} id={
+                  slug === 'module-1' ? 'symptom-root' :
+                  slug === 'module-2' ? 'differentiation' :
+                  slug === 'module-3' ? 'affordance' :
+                  slug === 'module-4' ? 'constraint-flow' :
+                  slug === 'module-5' ? 'practice-variability' :
+                  slug === 'module-6' ? 'four-variables' :
+                  slug === 'module-7' ? 'perception-action' :
+                  slug === 'module-8' ? 'before-after' : ''
+                } />
+              </div>
+            )}
           </div>
         ))}
 
