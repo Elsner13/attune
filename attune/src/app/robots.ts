@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/dashboard', '/welcome', '/sign-in', '/api/'],
       },
     ],
-    sitemap: 'https://attune.co/sitemap.xml',
+    sitemap: 'https://www.attunemastery.com/sitemap.xml',
   }
 }

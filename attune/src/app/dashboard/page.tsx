@@ -38,9 +38,9 @@ export default async function DashboardPage() {
         }}
       >
         {/* Logo */}
-        <div style={{ position: 'relative', width: '52px', height: '52px', marginBottom: '20px', flexShrink: 0 }}>
+        <Link href="/" style={{ position: 'relative', width: '52px', height: '52px', marginBottom: '20px', flexShrink: 0, display: 'block' }}>
           <Image src="/attune-logo.png" alt="Attune" fill style={{ objectFit: 'contain' }} priority />
-        </div>
+        </Link>
 
         {/* Heading */}
         <p

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: 'Attune | Skill Development & Performance Coaching',
     description:
       'Stop practicing harder and start practicing smarter. Attune helps you break through skill plateaus, close the gap between effort and results, and reach your next level of performance.',
-    url: 'https://attune.co',
+    url: 'https://www.attunemastery.com',
     siteName: 'Attune',
     type: 'website',
   },
@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     description:
       'Stop practicing harder and start practicing smarter. Attune helps you break through skill plateaus and reach your next level of performance.',
   },
-  metadataBase: new URL('https://attune.co'),
+  metadataBase: new URL('https://www.attunemastery.com'),
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
   name: 'Attune',
-  url: 'https://attune.co',
+  url: 'https://www.attunemastery.com',
   description:
     'Attune is a skill development and performance coaching platform for people who are putting in the work but not seeing the results. We help you break through skill plateaus, identify what is actually holding you back, and build the conditions for consistent improvement.',
   offers: {
@@ -56,7 +56,7 @@ const jsonLd = {
     provider: {
       '@type': 'Organization',
       name: 'Attune',
-      url: 'https://attune.co',
+      url: 'https://www.attunemastery.com',
     },
   },
 }
