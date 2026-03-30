@@ -28,7 +28,7 @@ export default function FoundationsPage() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: '80px',
+        padding: '0 24px 80px',
       }}
     >
       <Link href="/" style={{ position: 'relative', width: 'min(380px, 32vw)', aspectRatio: '1 / 1', marginBottom: '24px', display: 'block' }}>
