@@ -22,7 +22,7 @@ export default function ApplyPage() {
         href="/"
         style={{
           position: 'relative',
-          width: 'min(140px, 14vw)',
+          width: 'min(140px, max(80px, 14vw))',
           aspectRatio: '1 / 1',
           marginBottom: '56px',
           display: 'block',
@@ -36,7 +36,7 @@ export default function ApplyPage() {
         <p
           style={{
             fontFamily: fontBase,
-            fontSize: 'clamp(12px, 1.4vw, 22px)',
+            fontSize: 'clamp(16px, 1.4vw, 22px)',
             fontWeight: 400,
             letterSpacing: '0.02em',
             color: '#000000',
@@ -51,7 +51,7 @@ export default function ApplyPage() {
         <p
           style={{
             fontFamily: fontBase,
-            fontSize: 'clamp(10px, 1vw, 15px)',
+            fontSize: 'clamp(14px, 1vw, 15px)',
             fontWeight: 400,
             color: '#555555',
             lineHeight: 1.9,
