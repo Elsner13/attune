@@ -40,18 +40,23 @@ export default async function ModulePage({ params }: Props) {
         <Link
           href="/dashboard"
           style={{
-            display: 'inline-block',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
             fontFamily: 'var(--font-montserrat-alternates)',
-            fontSize: '10px',
-            fontWeight: 400,
+            fontSize: '11px',
+            fontWeight: 600,
             textTransform: 'uppercase',
-            letterSpacing: '0.12em',
-            color: '#bbbbbb',
+            letterSpacing: '0.10em',
+            color: '#000000',
             textDecoration: 'none',
+            border: '1px solid #000000',
+            borderRadius: '4px',
+            padding: '8px 16px',
             marginBottom: '40px',
           }}
         >
-          ← All Modules
+          ← Dashboard
         </Link>
 
         {/* Module number + title */}
