@@ -28,7 +28,7 @@ export default function Home() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: '80px',
+        padding: '0 24px 80px',
       }}
     >
       <div
