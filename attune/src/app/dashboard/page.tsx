@@ -1,17 +1,7 @@
 import Image from 'next/image'
 import { UserButton } from '@clerk/nextjs'
 import { currentUser } from '@clerk/nextjs/server'
-
-const modules = [
-  { num: '01', slug: 'module-1', title: 'The Wrong Problem' },
-  { num: '02', slug: 'module-2', title: 'How Skill Actually Happens' },
-  { num: '03', slug: 'module-3', title: 'What Your Environment Is Doing to You' },
-  { num: '04', slug: 'module-4', title: 'The Constraints That Are Running You' },
-  { num: '05', slug: 'module-5', title: 'Repetition Without Repetition' },
-  { num: '06', slug: 'module-6', title: 'Designing the Bowl' },
-  { num: '07', slug: 'module-7', title: 'Representative Practice' },
-  { num: '08', slug: 'module-8', title: 'The Perceptual Shift' },
-]
+import { modules } from '@/lib/modules'
 
 export default async function DashboardPage() {
   const user = await currentUser()
@@ -88,7 +78,7 @@ export default async function DashboardPage() {
             marginBottom: '32px',
           }}
         >
-          {completedCount} of 8 complete
+          {completedCount} of {modules.length} complete
         </p>
 
         {/* Module list */}
