@@ -114,7 +114,7 @@ export default async function ModulePage({ params }: Props) {
               style={{
                 fontFamily: 'var(--font-montserrat-alternates)',
                 fontSize: '11px',
-                fontWeight: 400,
+                fontWeight: 700,
                 textTransform: 'uppercase',
                 letterSpacing: '0.10em',
                 color: '#000000',
