@@ -169,7 +169,7 @@ export default function CoachingPage() {
                 letterSpacing: '-0.01em',
               }}
             >
-              $200
+              $250
             </p>
             <p
               style={{
@@ -214,7 +214,7 @@ export default function CoachingPage() {
                 letterSpacing: '-0.01em',
               }}
             >
-              $500
+              $650
               <span
                 style={{
                   fontSize: '13px',
