@@ -9,10 +9,11 @@ export default function CoachingPage() {
         <Image src="/attune-logo.png" alt="Attune" fill style={{ objectFit: 'contain' }} priority />
       </Link>
       <p style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: 'clamp(12px, 1.4vw, 24px)', fontWeight: 400, letterSpacing: '0.02em', color: '#000000', textAlign: 'center', textTransform: 'uppercase', margin: '0 0 12px' }}>
-        There are things a course cannot do.
+        Information isn&apos;t the problem.
       </p>
       <p style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: 'clamp(10px, 1vw, 16px)', fontWeight: 400, color: '#555555', textAlign: 'center', letterSpacing: '0.01em', margin: '0 0 32px', maxWidth: '420px' }}>
-        Ten spots. Monthly engagement. The kind of attention that actually changes something.
+        You&apos;ve read the books. You know what you should be doing. Something else is in the way.
+        That&apos;s what coaching is for. Ten spots. Real attention. The conversation that actually moves things.
       </p>
       <a href="/apply" style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: 'clamp(10px, 1vw, 14px)', fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#000000', textDecoration: 'none', border: '1px solid #000000', padding: '10px 28px' }}>
         Apply for a spot
