@@ -33,7 +33,7 @@ export default function FoundationsPage() {
           margin: '0 0 12px',
         }}
       >
-        Skill does not accumulate inside you.
+        The reps aren&apos;t the problem.
       </p>
 
       <p
@@ -48,8 +48,10 @@ export default function FoundationsPage() {
           maxWidth: '480px',
         }}
       >
-        It emerges from the relationship between you and your environment.
-        Eight modules. One shift in how you see.
+        You&apos;re doing the work. Showing up. Putting in the hours. Still not clicking.
+        Here&apos;s why: skill doesn&apos;t live inside you. It emerges from the relationship
+        between you and your environment. Change that relationship, and everything starts
+        moving differently. Eight modules. One reframe that makes the work finally land.
       </p>
 
       <a
