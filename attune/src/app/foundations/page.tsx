@@ -28,6 +28,7 @@ export default function FoundationsPage() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        paddingBottom: '80px',
       }}
     >
       <Link href="/" style={{ position: 'relative', width: 'min(380px, 32vw)', aspectRatio: '1 / 1', marginBottom: '24px', display: 'block' }}>
@@ -37,7 +38,7 @@ export default function FoundationsPage() {
       <p
         style={{
           fontFamily: 'var(--font-montserrat-alternates)',
-          fontSize: 'clamp(12px, 1.4vw, 24px)',
+          fontSize: 'clamp(16px, 1.4vw, 24px)',
           fontWeight: 400,
           letterSpacing: '0.02em',
           color: '#000000',
@@ -52,7 +53,7 @@ export default function FoundationsPage() {
       <p
         style={{
           fontFamily: 'var(--font-montserrat-alternates)',
-          fontSize: 'clamp(10px, 1vw, 16px)',
+          fontSize: 'clamp(15px, 1vw, 16px)',
           fontWeight: 400,
           color: '#555555',
           textAlign: 'center',
@@ -71,7 +72,7 @@ export default function FoundationsPage() {
         href={STRIPE_URL}
         style={{
           fontFamily: 'var(--font-montserrat-alternates)',
-          fontSize: 'clamp(10px, 1vw, 14px)',
+          fontSize: 'clamp(12px, 1vw, 14px)',
           fontWeight: 400,
           textTransform: 'uppercase',
           letterSpacing: '0.12em',
@@ -88,7 +89,7 @@ export default function FoundationsPage() {
         href="/sign-in"
         style={{
           fontFamily: 'var(--font-montserrat-alternates)',
-          fontSize: 'clamp(9px, 0.85vw, 12px)',
+          fontSize: 'clamp(11px, 0.85vw, 12px)',
           fontWeight: 400,
           textTransform: 'uppercase',
           letterSpacing: '0.12em',
