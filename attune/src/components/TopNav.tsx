@@ -7,7 +7,7 @@ const links = [
   { label: 'Foundations', href: '/foundations' },
   { label: 'Coaching', href: '/coaching' },
   { label: 'About', href: '/about' },
-  { label: 'Signal/Noise', href: 'https://signalnoise.substack.com', external: true },
+  { label: 'Signal/Noise', href: 'https://findthesignal.substack.com', external: true },
 ]
 
 export default function TopNav() {

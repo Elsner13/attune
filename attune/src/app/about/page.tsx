@@ -15,7 +15,7 @@ export default function AboutPage() {
         Two-time NCAA National Champion. Found ecological dynamics.
         Haven&apos;t shut up about it since.
       </p>
-      <a href="https://signalnoise.substack.com" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: 'clamp(10px, 1vw, 14px)', fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#000000', textDecoration: 'none', border: '1px solid #000000', padding: '10px 28px' }}>
+      <a href="https://findthesignal.substack.com" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: 'clamp(10px, 1vw, 14px)', fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#000000', textDecoration: 'none', border: '1px solid #000000', padding: '10px 28px' }}>
         Read Signal/Noise
       </a>
       <TubelightNav />
