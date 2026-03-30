@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { TubelightNav } from '@/components/TubelightNav'
 
 // TODO: replace with your Telegram username
-const TELEGRAM_URL = 'https://t.me/YOURUSERNAME'
+const TELEGRAM_URL = 'https://t.me/+16128453855'
 
 const font = 'var(--font-montserrat-alternates)'
 
