@@ -187,6 +187,81 @@ export default async function ModulePage({ params }: Props) {
                 } />
               </div>
             )}
+            {/* Inline animation — sIdx 5 */}
+            {sIdx === 5 && (
+              <div style={{ marginTop: '32px' }}>
+                <ModuleInline slug={slug} id={
+                  slug === 'module-1' ? 'perceptual-layer' :
+                  slug === 'module-2' ? 'adaptive-system' :
+                  slug === 'module-3' ? 'comfort-trap' :
+                  slug === 'module-4' ? 'perceptual-chain' :
+                  slug === 'module-5' ? 'struggle-signal' :
+                  slug === 'module-6' ? 'recovery-cycle' :
+                  slug === 'module-7' ? 'failure-modes' :
+                  slug === 'module-8' ? 'phase-transitions' : ''
+                } />
+              </div>
+            )}
+            {/* Inline animation — sIdx 7 */}
+            {sIdx === 7 && (
+              <div style={{ marginTop: '32px' }}>
+                <ModuleInline slug={slug} id={
+                  slug === 'module-1' ? 'self-diagnosis' :
+                  slug === 'module-2' ? 'the-click' :
+                  slug === 'module-3' ? 'env-audit' :
+                  slug === 'module-4' ? 'ruthless-priority' :
+                  slug === 'module-5' ? 'variability-expertise' :
+                  slug === 'module-6' ? 'design-from-failure' :
+                  slug === 'module-7' ? 'instruction-limit' :
+                  slug === 'module-8' ? 'cant-unsee' : ''
+                } />
+              </div>
+            )}
+            {/* Inline animation — sIdx 9 */}
+            {sIdx === 9 && (
+              <div style={{ marginTop: '32px' }}>
+                <ModuleInline slug={slug} id={
+                  slug === 'module-1' ? 'solution-process' :
+                  slug === 'module-2' ? 'expert-traits' :
+                  slug === 'module-3' ? 'three-levers' :
+                  slug === 'module-4' ? '' :
+                  slug === 'module-5' ? 'productive-variability' :
+                  slug === 'module-6' ? 'productive-failure' :
+                  slug === 'module-7' ? 'transfer-principles' :
+                  slug === 'module-8' ? 'build-architecture' : ''
+                } />
+              </div>
+            )}
+            {/* Inline animation — sIdx 11 */}
+            {sIdx === 11 && (
+              <div style={{ marginTop: '32px' }}>
+                <ModuleInline slug={slug} id={
+                  slug === 'module-1' ? 'feedback-loop-gap' :
+                  slug === 'module-2' ? 'discrimination' :
+                  slug === 'module-3' ? 'affordance-levels' :
+                  slug === 'module-4' ? '' :
+                  slug === 'module-5' ? 'the-question' :
+                  slug === 'module-6' ? 'bowl-fits-you' :
+                  slug === 'module-7' ? 'specificity' :
+                  slug === 'module-8' ? 'after-course' : ''
+                } />
+              </div>
+            )}
+            {/* Inline animation — sIdx 13 */}
+            {sIdx === 13 && (
+              <div style={{ marginTop: '32px' }}>
+                <ModuleInline slug={slug} id={
+                  slug === 'module-1' ? 'nonlinear-path' :
+                  slug === 'module-2' ? 'perceptual-audit' :
+                  slug === 'module-3' ? 'what-changes' :
+                  slug === 'module-4' ? '' :
+                  slug === 'module-5' ? '' :
+                  slug === 'module-6' ? 'practice-network' :
+                  slug === 'module-7' ? 'variable-practice' :
+                  slug === 'module-8' ? '' : ''
+                } />
+              </div>
+            )}
           </div>
         ))}
 
