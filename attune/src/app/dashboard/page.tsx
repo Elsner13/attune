@@ -1,45 +1,184 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { UserButton } from '@clerk/nextjs'
+import { currentUser } from '@clerk/nextjs/server'
 
-export default function DashboardPage() {
+const modules = [
+  { num: '01', slug: 'module-1', title: 'The Wrong Problem' },
+  { num: '02', slug: 'module-2', title: 'How Skill Actually Happens' },
+  { num: '03', slug: 'module-3', title: 'What Your Environment Is Doing to You' },
+  { num: '04', slug: 'module-4', title: 'The Constraints That Are Running You' },
+  { num: '05', slug: 'module-5', title: 'Repetition Without Repetition' },
+  { num: '06', slug: 'module-6', title: 'Designing the Bowl' },
+  { num: '07', slug: 'module-7', title: 'Representative Practice' },
+  { num: '08', slug: 'module-8', title: 'The Perceptual Shift' },
+]
+
+export default async function DashboardPage() {
+  const user = await currentUser()
+  const completed = (user?.publicMetadata?.completedModules as string[]) ?? []
+  const completedCount = completed.length
+
   return (
-    <div style={{ position: 'fixed', inset: 0, background: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ position: 'absolute', top: '24px', right: '28px' }}>
-        <UserButton  />
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: '#ffffff',
+        display: 'flex',
+        flexDirection: 'column',
+        overflowY: 'auto',
+      }}
+    >
+      {/* UserButton */}
+      <div style={{ position: 'fixed', top: '20px', right: '24px', zIndex: 10 }}>
+        <UserButton />
       </div>
 
-      <div style={{ position: 'relative', width: 'min(140px, 14vw)', aspectRatio: '1 / 1', marginBottom: '24px' }}>
-        <Image src="/attune-logo.png" alt="Attune" fill style={{ objectFit: 'contain' }} priority />
-      </div>
+      {/* Centered content */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '100%',
+          maxWidth: '480px',
+          margin: 'auto',
+          padding: '48px 24px',
+        }}
+      >
+        {/* Logo */}
+        <div style={{ position: 'relative', width: '52px', height: '52px', marginBottom: '20px', flexShrink: 0 }}>
+          <Image src="/attune-logo.png" alt="Attune" fill style={{ objectFit: 'contain' }} priority />
+        </div>
 
-      <p style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: 'clamp(12px, 1.4vw, 22px)', fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#000000', margin: '0 0 8px', textAlign: 'center' }}>
-        Foundations
-      </p>
-      <p style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: 'clamp(10px, 1vw, 15px)', color: '#555555', margin: '0 0 40px', textAlign: 'center' }}>
-        Eight modules. One shift in how you see.
-      </p>
+        {/* Heading */}
+        <p
+          style={{
+            fontFamily: 'var(--font-montserrat-alternates)',
+            fontSize: '10px',
+            fontWeight: 400,
+            textTransform: 'uppercase',
+            letterSpacing: '0.12em',
+            color: '#999999',
+            marginBottom: '6px',
+            textAlign: 'center',
+          }}
+        >
+          Foundations
+        </p>
+        <h1
+          style={{
+            fontFamily: 'var(--font-montserrat-alternates)',
+            fontSize: 'clamp(18px, 2vw, 22px)',
+            fontWeight: 600,
+            color: '#000000',
+            textAlign: 'center',
+            marginBottom: '4px',
+            lineHeight: 1.2,
+          }}
+        >
+          Eight modules. One shift.
+        </h1>
+        <p
+          style={{
+            fontFamily: 'var(--font-montserrat-alternates)',
+            fontSize: '12px',
+            color: '#aaaaaa',
+            textAlign: 'center',
+            marginBottom: '32px',
+          }}
+        >
+          {completedCount} of 8 complete
+        </p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0', width: 'min(480px, 90vw)', border: '1px solid rgba(0,0,0,0.1)' }}>
-        {[
-          'The Wrong Problem',
-          'How Skill Actually Happens',
-          'What Your Environment Is Doing to You',
-          'The Constraints That Are Running You',
-          'Repetition Without Repetition',
-          'Designing the Bowl',
-          'Representative Practice',
-          'The Perceptual Shift',
-        ].map((title, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '20px', padding: '16px 20px', borderBottom: i < 7 ? '1px solid rgba(0,0,0,0.08)' : 'none' }}>
-            <span style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: '11px', color: 'rgba(0,0,0,0.3)', minWidth: '20px' }}>
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <span style={{ fontFamily: 'var(--font-montserrat-alternates)', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#000000' }}>
-              {title}
-            </span>
-          </div>
-        ))}
+        {/* Module list */}
+        <div
+          style={{
+            width: '100%',
+            border: '1px solid rgba(0,0,0,0.10)',
+            borderRadius: '4px',
+            overflow: 'hidden',
+          }}
+        >
+          {modules.map((mod, i) => {
+            const done = completed.includes(mod.slug)
+            return (
+              <div
+                key={mod.slug}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '14px',
+                  padding: '14px 20px',
+                  borderBottom: i < modules.length - 1 ? '1px solid rgba(0,0,0,0.07)' : 'none',
+                  opacity: done ? 0.42 : 1,
+                }}
+              >
+                {/* Number */}
+                <span
+                  style={{
+                    fontFamily: 'var(--font-montserrat-alternates)',
+                    fontSize: '10px',
+                    color: '#cccccc',
+                    minWidth: '18px',
+                    letterSpacing: '0.04em',
+                  }}
+                >
+                  {mod.num}
+                </span>
+
+                {/* Check indicator */}
+                {done ? (
+                  <div
+                    style={{
+                      width: '15px',
+                      height: '15px',
+                      borderRadius: '50%',
+                      background: '#000000',
+                      flexShrink: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+                      <polyline
+                        points="1,3 3,5 7,1"
+                        stroke="#ffffff"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      width: '15px',
+                      height: '15px',
+                      borderRadius: '50%',
+                      border: '1.5px solid rgba(0,0,0,0.18)',
+                      flexShrink: 0,
+                    }}
+                  />
+                )}
+
+                {/* Title */}
+                <span
+                  style={{
+                    fontFamily: 'var(--font-montserrat-alternates)',
+                    fontSize: '12px',
+                    color: '#000000',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                  }}
+                >
+                  {mod.title}
+                </span>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
