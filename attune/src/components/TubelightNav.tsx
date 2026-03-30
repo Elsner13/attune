@@ -4,6 +4,7 @@ import * as React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const navItems = [
   { label: 'Foundations', href: '/foundations' },
@@ -14,6 +15,7 @@ const navItems = [
 
 export function TubelightNav() {
   const pathname = usePathname()
+  const isMobile = useIsMobile()
   const activeIndex = navItems.findIndex(item => !item.external && item.href === pathname)
   const containerRef = React.useRef<HTMLDivElement>(null)
   const itemRefs = React.useRef<Array<HTMLAnchorElement | null>>([])
@@ -24,7 +26,6 @@ export function TubelightNav() {
     const container = containerRef.current
     const activeItem = activeIndex >= 0 ? itemRefs.current[activeIndex] : null
     if (!container || !activeItem) return
-
     const containerRect = container.getBoundingClientRect()
     const itemRect = activeItem.getBoundingClientRect()
     setIndicatorStyle({
@@ -39,6 +40,64 @@ export function TubelightNav() {
     window.addEventListener('resize', updateIndicator)
     return () => window.removeEventListener('resize', updateIndicator)
   }, [updateIndicator])
+
+  const mobileItemStyle = (isActive: boolean): React.CSSProperties => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '4px',
+    fontFamily: 'var(--font-montserrat-alternates)',
+    fontSize: '11px',
+    fontWeight: isActive ? 500 : 400,
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
+    color: isActive ? '#000000' : 'rgba(0,0,0,0.38)',
+    textDecoration: 'none',
+    padding: '4px 8px',
+  })
+
+  if (isMobile) {
+    return (
+      <nav
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          background: 'rgba(255,255,255,0.96)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderTop: '1px solid rgba(0,0,0,0.09)',
+          display: 'flex',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          paddingTop: '10px',
+          paddingBottom: 'max(14px, env(safe-area-inset-bottom))',
+        }}
+      >
+        {navItems.map((item, index) => {
+          const isActive = index === activeIndex
+          const style = mobileItemStyle(isActive)
+          const underline = isActive ? (
+            <div style={{ width: '20px', height: '2px', background: '#000000', borderRadius: '9999px' }} />
+          ) : null
+
+          return item.external ? (
+            <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer" style={style}>
+              {item.label}
+              {underline}
+            </a>
+          ) : (
+            <Link key={item.href} href={item.href} style={style}>
+              {item.label}
+              {underline}
+            </Link>
+          )
+        })}
+      </nav>
+    )
+  }
 
   return (
     <nav
@@ -106,7 +165,6 @@ export function TubelightNav() {
           )
         })}
 
-        {/* Tubelight indicator */}
         {indicatorStyle && activeIndex >= 0 && (
           <motion.div
             initial={false}
@@ -120,7 +178,6 @@ export function TubelightNav() {
               opacity: isReady ? 1 : 0,
             }}
           >
-            {/* tube bar */}
             <div style={{
               position: 'absolute',
               top: 0,
@@ -131,7 +188,6 @@ export function TubelightNav() {
               background: '#000000',
               borderRadius: '9999px',
             }} />
-            {/* glow */}
             <div style={{
               position: 'absolute',
               top: 0,
