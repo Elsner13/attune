@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { UserButton } from '@clerk/nextjs'
 import { currentUser } from '@clerk/nextjs/server'
 import { modules } from '@/lib/modules'
@@ -93,8 +94,9 @@ export default async function DashboardPage() {
           {modules.map((mod, i) => {
             const done = completed.includes(mod.slug)
             return (
-              <div
+              <Link
                 key={mod.slug}
+                href={`/dashboard/${mod.slug}`}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -102,6 +104,8 @@ export default async function DashboardPage() {
                   padding: '14px 20px',
                   borderBottom: i < modules.length - 1 ? '1px solid rgba(0,0,0,0.07)' : 'none',
                   opacity: done ? 0.42 : 1,
+                  textDecoration: 'none',
+                  color: 'inherit',
                 }}
               >
                 {/* Number */}
@@ -165,7 +169,7 @@ export default async function DashboardPage() {
                 >
                   {mod.title}
                 </span>
-              </div>
+              </Link>
             )
           })}
         </div>
