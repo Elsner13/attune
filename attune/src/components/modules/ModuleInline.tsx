@@ -1,5 +1,6 @@
 // src/components/modules/ModuleInline.tsx
 'use client'
+import type React from 'react'
 import dynamic from 'next/dynamic'
 
 const inlines: Record<string, Record<string, React.ComponentType>> = {

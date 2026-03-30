@@ -1,5 +1,6 @@
 // src/components/modules/ModuleHero.tsx
 'use client'
+import type React from 'react'
 import dynamic from 'next/dynamic'
 
 const heroes: Record<string, React.ComponentType> = {
