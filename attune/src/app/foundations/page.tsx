@@ -69,6 +69,22 @@ export default function FoundationsPage() {
         Enroll — $197
       </a>
 
+      <Link
+        href="/sign-in"
+        style={{
+          fontFamily: 'var(--font-montserrat-alternates)',
+          fontSize: 'clamp(9px, 0.85vw, 12px)',
+          fontWeight: 400,
+          textTransform: 'uppercase',
+          letterSpacing: '0.12em',
+          color: '#aaaaaa',
+          textDecoration: 'none',
+          marginTop: '16px',
+        }}
+      >
+        Already enrolled? Sign in
+      </Link>
+
       <TubelightNav />
     </div>
   )
