@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { TubelightNav } from '@/components/TubelightNav'
 
+// TODO: replace with your Telegram username
+const TELEGRAM_URL = 'https://t.me/YOURUSERNAME'
+
 const font = 'var(--font-montserrat-alternates)'
 
 const sectionHeadingStyle: React.CSSProperties = {
@@ -26,10 +29,23 @@ const bodyStyle: React.CSSProperties = {
 
 const dividerStyle: React.CSSProperties = {
   width: '100%',
-  maxWidth: '560px',
   height: '1px',
   background: '#e8e8e8',
   margin: '48px 0',
+}
+
+const telegramBtnStyle: React.CSSProperties = {
+  display: 'inline-block',
+  marginTop: '24px',
+  fontFamily: font,
+  fontSize: '11px',
+  fontWeight: 400,
+  textTransform: 'uppercase',
+  letterSpacing: '0.12em',
+  color: '#000000',
+  textDecoration: 'none',
+  border: '1px solid #000000',
+  padding: '9px 20px',
 }
 
 export default function CoachingPage() {
@@ -78,8 +94,8 @@ export default function CoachingPage() {
         {/* What this is */}
         <p style={sectionHeadingStyle}>What this is</p>
         <p style={bodyStyle}>
-          This is one-on-one work. Not a group program, not a course, not a framework
-          handed to you to execute alone.
+          This is my only private coaching container. One-on-one, ongoing, built entirely
+          around you.
         </p>
         <p style={bodyStyle}>
           You&apos;re working directly with me — on your specific situation, your specific
@@ -91,22 +107,29 @@ export default function CoachingPage() {
           conditions. Most people try to change themselves. We change the conditions.
           The results follow.
         </p>
+        <p style={bodyStyle}>
+          Think of it as a performance coach and thinking partner in your pocket —
+          someone who knows your actual situation, not a generic version of it.
+        </p>
 
         <div style={dividerStyle} />
 
         {/* How it works */}
         <p style={sectionHeadingStyle}>How it works</p>
         <p style={bodyStyle}>
-          We start with a single call to understand where you are, what you&apos;re working
-          on, and what&apos;s actually in the way. Not the story about it — the actual thing.
+          We start with a 75-minute onboarding call to map your situation: where you are,
+          what you&apos;re working on, and what&apos;s actually in the way. Not the story
+          about it — the actual thing.
         </p>
         <p style={bodyStyle}>
-          From there: regular calls, direct access between sessions, and real-time
-          attention when the moment is happening — not just when we have a scheduled hour.
+          From there you have a direct line to me. Voice notes, messages, real-time
+          check-ins when the moment is live — not just when we have a scheduled hour.
+          A brief daily check-in keeps me inside the loop as things evolve.
         </p>
         <p style={bodyStyle}>
-          I read the situation, not the generic version of it. What you get back is honest,
-          specific, and built for your actual circumstances.
+          Along the way: resources, frameworks, and assignments built for your specific
+          situation. Nothing generic. Everything matched to what you&apos;re actually
+          working through.
         </p>
 
         <div style={dividerStyle} />
@@ -114,40 +137,33 @@ export default function CoachingPage() {
         {/* Who it's for */}
         <p style={sectionHeadingStyle}>Who it&apos;s for</p>
         <p style={bodyStyle}>
-          You&apos;re already doing the work. Showing up. Putting in the hours. Something
-          still isn&apos;t moving the way it should.
+          Founders, athletes, creators, executives — anyone doing serious work on
+          something that matters to them.
+        </p>
+        <p style={bodyStyle}>
+          The common thread: you&apos;re already doing the work. Showing up. Putting in
+          the hours. Something still isn&apos;t moving the way it should.
         </p>
         <p style={bodyStyle}>
           Maybe it&apos;s performance — athletic, creative, professional. Maybe it&apos;s a
-          decision you keep circling. Maybe it&apos;s a pattern you&apos;ve named but can&apos;t
-          seem to actually change.
+          decision you keep circling. Maybe it&apos;s a pattern you&apos;ve identified
+          but can&apos;t seem to actually change.
         </p>
         <p style={bodyStyle}>
           If you want someone to hand you a system, this isn&apos;t it. If you want someone
-          to actually look at your situation and help you see what you can&apos;t see alone —
+          to actually look at your situation and tell you what you can&apos;t see alone —
           this is it.
         </p>
 
         <div style={dividerStyle} />
 
         {/* Packages */}
-        <p style={sectionHeadingStyle}>Options</p>
+        <p style={sectionHeadingStyle}>1:1 Coaching Packages</p>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '20px',
-            marginBottom: '40px',
-          }}
-        >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+
           {/* Clarity Call */}
-          <div
-            style={{
-              border: '1px solid #d8d8d8',
-              padding: '28px 24px',
-            }}
-          >
+          <div style={{ border: '1px solid #d8d8d8', padding: '32px 28px' }}>
             <p
               style={{
                 fontFamily: font,
@@ -155,7 +171,7 @@ export default function CoachingPage() {
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 color: '#000000',
-                margin: '0 0 8px',
+                margin: '0 0 10px',
               }}
             >
               Clarity Call
@@ -163,7 +179,7 @@ export default function CoachingPage() {
             <p
               style={{
                 fontFamily: font,
-                fontSize: 'clamp(18px, 2vw, 26px)',
+                fontSize: 'clamp(20px, 2.2vw, 30px)',
                 color: '#000000',
                 margin: '0 0 16px',
                 letterSpacing: '-0.01em',
@@ -174,25 +190,25 @@ export default function CoachingPage() {
             <p
               style={{
                 fontFamily: font,
-                fontSize: '13px',
-                color: '#777777',
-                lineHeight: 1.85,
+                fontSize: '14px',
+                color: '#666666',
+                lineHeight: 1.9,
                 margin: '0',
                 letterSpacing: '0.01em',
+                maxWidth: '420px',
               }}
             >
-              One 60-minute call. We look at what&apos;s actually happening, find the
-              leverage point, and you leave with a clear direction.
+              A single 75-minute call. We map what&apos;s actually happening, identify
+              the leverage point, and you leave with a clear direction and a specific
+              move to make.
             </p>
+            <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" style={telegramBtnStyle}>
+              Inquire via Telegram
+            </a>
           </div>
 
           {/* Full Engagement */}
-          <div
-            style={{
-              border: '1px solid #000000',
-              padding: '28px 24px',
-            }}
-          >
+          <div style={{ border: '1px solid #000000', padding: '32px 28px' }}>
             <p
               style={{
                 fontFamily: font,
@@ -200,7 +216,7 @@ export default function CoachingPage() {
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 color: '#000000',
-                margin: '0 0 8px',
+                margin: '0 0 10px',
               }}
             >
               Full Engagement
@@ -208,70 +224,51 @@ export default function CoachingPage() {
             <p
               style={{
                 fontFamily: font,
-                fontSize: 'clamp(18px, 2vw, 26px)',
+                fontSize: 'clamp(20px, 2.2vw, 30px)',
                 color: '#000000',
-                margin: '0 0 16px',
+                margin: '0 0 4px',
                 letterSpacing: '-0.01em',
               }}
             >
               $650
-              <span
-                style={{
-                  fontSize: '13px',
-                  color: '#888888',
-                  letterSpacing: '0.04em',
-                }}
-              >
+              <span style={{ fontSize: '14px', color: '#888888', letterSpacing: '0.04em' }}>
                 {' '}/month
               </span>
             </p>
             <p
               style={{
                 fontFamily: font,
-                fontSize: '13px',
-                color: '#777777',
-                lineHeight: 1.85,
-                margin: '0',
-                letterSpacing: '0.01em',
+                fontSize: '11px',
+                color: '#aaaaaa',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                margin: '0 0 16px',
               }}
             >
-              Two calls per month. Direct access between sessions. Ongoing attention
-              to your situation as it evolves. Ten spots.
+              Ten spots
             </p>
+            <p
+              style={{
+                fontFamily: font,
+                fontSize: '14px',
+                color: '#666666',
+                lineHeight: 1.9,
+                margin: '0',
+                letterSpacing: '0.01em',
+                maxWidth: '420px',
+              }}
+            >
+              Monthly 75-minute calls. Direct Telegram access between sessions.
+              Daily check-ins so I stay inside what&apos;s actually happening.
+              Resources and assignments built for your specific situation.
+              Ongoing attention for as long as we&apos;re working together.
+            </p>
+            <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" style={telegramBtnStyle}>
+              Inquire via Telegram
+            </a>
           </div>
+
         </div>
-
-        {/* CTA */}
-        <Link
-          href="/apply"
-          style={{
-            display: 'inline-block',
-            fontFamily: font,
-            fontSize: 'clamp(10px, 1vw, 14px)',
-            fontWeight: 400,
-            textTransform: 'uppercase',
-            letterSpacing: '0.12em',
-            color: '#000000',
-            textDecoration: 'none',
-            border: '1px solid #000000',
-            padding: '10px 28px',
-          }}
-        >
-          Apply for a spot
-        </Link>
-
-        <p
-          style={{
-            fontFamily: font,
-            fontSize: '11px',
-            letterSpacing: '0.06em',
-            color: '#aaaaaa',
-            textTransform: 'uppercase',
-            marginTop: '20px',
-          }}
-        >
-          I read every application personally.
-        </p>
 
       </div>
 
