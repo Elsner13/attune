@@ -32,9 +32,8 @@ export default async function ModulePage({ params }: Props) {
       <div
         style={{
           width: '100%',
-          maxWidth: '620px',
           margin: '0 auto',
-          padding: '48px 24px 96px',
+          padding: '48px clamp(24px, 5vw, 80px) 96px',
         }}
       >
         {/* Back link */}
