@@ -1,12 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-const kitApiKey = process.env.KIT_API_KEY!;
-const foundationsTagId = process.env.KIT_FOUNDATIONS_TAG_ID!;
 
-async function tagKitSubscriber(email: string, firstName: string | null) {
+async function tagKitSubscriber(email: string, firstName: string | null, kitApiKey: string, foundationsTagId: string) {
   const res = await fetch(
     `https://api.convertkit.com/v3/tags/${foundationsTagId}/subscribe`,
     {
@@ -26,6 +22,11 @@ async function tagKitSubscriber(email: string, firstName: string | null) {
 }
 
 export async function POST(req: NextRequest) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+  const kitApiKey = process.env.KIT_API_KEY!;
+  const foundationsTagId = process.env.KIT_FOUNDATIONS_TAG_ID!;
+
   const body = await req.text();
   const sig = req.headers.get("stripe-signature");
 
@@ -48,7 +49,7 @@ export async function POST(req: NextRequest) {
     const firstName = name ? name.split(" ")[0] : null;
 
     if (email) {
-      await tagKitSubscriber(email, firstName);
+      await tagKitSubscriber(email, firstName, kitApiKey, foundationsTagId);
       console.log(`Tagged ${email} as foundations-buyer in Kit`);
     }
   }
