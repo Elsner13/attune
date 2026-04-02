@@ -31,12 +31,14 @@ export const metadata: Metadata = {
     url: 'https://www.attunemastery.com',
     siteName: 'Attune',
     type: 'website',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Attune — Skill is forged, not taught.' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Attune | Skill Development & Performance Coaching',
     description:
       'Stop practicing harder and start practicing smarter. Attune helps you break through skill plateaus and reach your next level of performance.',
+    images: ['/og.png'],
   },
   metadataBase: new URL('https://www.attunemastery.com'),
 }
