@@ -84,11 +84,15 @@ export async function sendApprovalRequest(opts: {
 }
 
 export async function answerCallbackQuery(callbackQueryId: string, text = "Got it."): Promise<void> {
-  await fetch(`${BASE()}/answerCallbackQuery`, {
+  const res = await fetch(`${BASE()}/answerCallbackQuery`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ callback_query_id: callbackQueryId, text }),
   });
+  if (!res.ok) {
+    const body = await res.text();
+    console.error(`Telegram answerCallbackQuery failed: ${res.status} ${body}`);
+  }
 }
 
 export async function setWebhook(webhookUrl: string): Promise<void> {
@@ -98,5 +102,9 @@ export async function setWebhook(webhookUrl: string): Promise<void> {
     body: JSON.stringify({ url: webhookUrl }),
   });
   const data = await res.json();
-  console.log("setWebhook response:", data);
+  if (!res.ok) {
+    console.error(`Telegram setWebhook failed: ${res.status}`, data);
+  } else {
+    console.log("Telegram webhook registered:", data.description);
+  }
 }
