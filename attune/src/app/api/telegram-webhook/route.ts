@@ -6,7 +6,11 @@ import { updateQueueItem } from "@/lib/agent-queue";
 // These are stubs in Phase 1. Phases 3–5 will replace these with real actions.
 
 async function handleApprove(agent: string, itemId: string): Promise<void> {
-  updateQueueItem(itemId, { status: "approved" });
+  const result = updateQueueItem(itemId, { status: "approved" });
+  if (!result) {
+    await sendMessage(`⚠️ Could not find queue item: ${itemId}. It may have already been processed.`);
+    return;
+  }
   switch (agent) {
     case "writer":
       // Phase 3: publishNewsletter(itemId)
@@ -26,7 +30,11 @@ async function handleApprove(agent: string, itemId: string): Promise<void> {
 }
 
 async function handleRevise(agent: string, itemId: string): Promise<void> {
-  updateQueueItem(itemId, { status: "revised" });
+  const result = updateQueueItem(itemId, { status: "revised" });
+  if (!result) {
+    await sendMessage(`⚠️ Could not find queue item: ${itemId}. It may have already been processed.`);
+    return;
+  }
   switch (agent) {
     case "writer":
       // Phase 3: requeueWriter(itemId)
@@ -38,7 +46,11 @@ async function handleRevise(agent: string, itemId: string): Promise<void> {
 }
 
 async function handleSkip(agent: string, itemId: string): Promise<void> {
-  updateQueueItem(itemId, { status: "skipped" });
+  const result = updateQueueItem(itemId, { status: "skipped" });
+  if (!result) {
+    await sendMessage(`⚠️ Could not find queue item: ${itemId}. It may have already been processed.`);
+    return;
+  }
   await sendMessage(`⏭️ Skipped: ${agent}`);
 }
 
