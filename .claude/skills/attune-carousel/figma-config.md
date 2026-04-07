@@ -3,7 +3,8 @@
 ## Figma File
 
 **File name:** Attune Carousel Templates
-**File URL:** [PASTE YOUR FIGMA FILE URL HERE after creating the file in Figma]
+**File URL:** https://www.figma.com/design/ajJJQqdVpttio1vgO2U6Mf
+**File key:** ajJJQqdVpttio1vgO2U6Mf
 
 ## Pages
 
