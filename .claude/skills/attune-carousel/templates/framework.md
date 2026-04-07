@@ -16,10 +16,10 @@
 **Label layer (`slide-1-label`):** `ATTUNE` (Geist Mono, tracked caps, gold)
 **Tone:** Direct. The number signals completeness. The specificity signals authority.
 
-**Copy prompt:** Write the hook as a numbered statement targeting a specific person (coach, creator, athlete, writer, parent). N is typically 3 — the minimum for a framework, the maximum for a single carousel. Examples:
-- "The 3 questions every coach should ask before designing a drill."
-- "The 3 things every creator gets wrong about practice."
-- "The 3 constraints every skill environment needs."
+**Copy prompt:** Write the hook as a numbered statement targeting a specific person (coach, creator, athlete, writer, parent). N is typically 3 — the minimum for a framework, the maximum for a single carousel. The number N is the `slide-1-headline-accent` content — it is the gold-accented word in the headline. Examples:
+- "The **3** questions every coach should ask before designing a drill."
+- "The **3** things every creator gets wrong about practice."
+- "The **3** constraints every skill environment needs."
 
 ---
 
