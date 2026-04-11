@@ -4,8 +4,6 @@ import { Resend } from 'resend'
 import { ARCHETYPES } from '@/components/quiz/archetypes'
 import type { ArchetypeKey } from '@/components/quiz/archetypes'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 interface QuizSubmitBody {
   firstName: string
   email: string
@@ -70,6 +68,7 @@ export async function POST(req: NextRequest) {
   }
 
   // 2. Send immediate PDF email via Resend
+  const resend = new Resend(process.env.RESEND_API_KEY)
   let resendSuccess = false
   try {
     const { error } = await resend.emails.send({
