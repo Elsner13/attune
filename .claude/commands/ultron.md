@@ -90,6 +90,37 @@ Log: ~/.claude/attune-actions/<filename>
 
 ## Classification Rules
 
+Every action is classified as **safe** or **risky** before any write. The classification is recorded in the log. Permissions cannot be widened from within a tick — changes to this allowlist require Sam editing `~/.claude/attune-goals.md` by hand.
+
+### Safe paths (may be edited without review)
+
+- `~/.claude/skills/*/SKILL.md` — playbook files
+- Content draft templates under `~/.claude/skills/attune-carousel/` and `~/.claude/skills/content-plan/`
+- Memory files under `~/.claude/projects/-Users-samelsner/memory/`
+- Log files under `~/.claude/attune-actions/`
+- `~/.claude/attune-review-queue.md` (the queue file itself)
+
+### Risky actions (propose to queue only, never execute)
+
+- Any edit to `~/.claude/attune-goals.md` — Ultron cannot modify its own alignment anchor under any circumstance.
+- Any edit to `~/.claude/attune-metrics.json` beyond the first-run zero-initialization (the metrics file is externally maintained by Sam).
+- Any edit under `~/Desktop/attune/attune-website/src/app/` — published-facing marketing pages, module pages, pricing, checkout flow.
+- Any Stripe or Clerk configuration change.
+- Any action that publishes to an audience regardless of file: posting to Buffer, IG, TikTok, Substack; sending email via Kit; running paid ads.
+- Any edit to published Foundations module content.
+
+### Ambiguous → risky
+
+If the classifier cannot confidently place the action in the safe list, route it to the queue. A queued action is cheap. An un-queued risky action is expensive.
+
+### Voice-drift soft halt
+
+Before choosing an action in Step 4: read `substack_reply_rate_this_week` and `rolling_4w_avg` from the metrics file. If `substack_reply_rate_this_week` has dropped **more than 30%** versus `rolling_4w_avg`, refuse to pick any content-generation action (carousel drafts, Substack drafts, email drafts, landing-page copy edits) during this tick. Playbook edits, memory edits, and research-style actions remain allowed.
+
+Log the halt in the reflection: `Voice drift detected (reply rate <value> vs 4w avg <value>) — content actions suspended this tick.`
+
+Clear the halt by Sam doing the voice-drift-detected work by hand and updating the metrics file.
+
 ## Templates
 
 ## Operating Discipline
