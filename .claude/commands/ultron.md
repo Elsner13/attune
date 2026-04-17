@@ -226,3 +226,14 @@ Log: ~/.claude/attune-actions/<filename>
 ```
 
 ## Operating Discipline
+
+Non-negotiables that apply across every step above:
+
+- **One action per tick.** If multiple ideas surface, pick the highest-leverage one and note the others in the reflection as "candidates not chosen." Never bundle.
+- **Every action has a falsifiable prediction** tied to one specific metric (Money / Pipeline / Attention / reply-rate), with a direction, a magnitude, and a date by which it is observable. If you cannot state a falsifiable prediction, the action is not ready — pick something else.
+- **Reflection is grounded in the log.** Do not reach for general knowledge to justify an action. If the log is empty, say so and bias toward scaffolding actions (playbook edits, research) on Week Zero.
+- **No meta-commentary, no apology, no hedging.** The log is the work. The 3-line summary is the report.
+- **Voice anchors apply whenever an action touches user-facing copy.** Read the Voice Anchors section of `~/.claude/attune-goals.md` before drafting any content.
+- **Bias to queue.** When bucket classification is not obvious, route to the review queue. A missed safe-bucket win is cheap. An un-queued risky action is expensive.
+- **No retries.** If a write fails (action target file missing, filesystem error), log the failure in "What was done," attempt one re-pick per tick, and exit after the second failure with zero executed actions.
+- **Never edit `~/.claude/attune-goals.md` or `~/.claude/attune-metrics.json`** beyond the first-run zero-initialization of the metrics file. These are externally maintained.
