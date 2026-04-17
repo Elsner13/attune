@@ -123,4 +123,106 @@ Clear the halt by Sam doing the voice-drift-detected work by hand and updating t
 
 ## Templates
 
+Use these exact shapes. Do not invent new fields.
+
+### Metrics file template — `~/.claude/attune-metrics.json`
+
+Used only on Week Zero when the file is missing. All fields start at zero; `updated_at` is today in `YYYY-MM-DD`.
+
+```json
+{
+  "updated_at": "YYYY-MM-DD",
+  "money": {
+    "foundations_purchases_this_week": 0,
+    "foundations_purchases_trailing_4w": 0,
+    "revenue_usd_this_week": 0
+  },
+  "pipeline": {
+    "kit_subscribers": 0,
+    "substack_free_subscribers": 0,
+    "delta_vs_last_week": 0
+  },
+  "attention": {
+    "carousel_saves_this_week": 0,
+    "substack_restacks_this_week": 0,
+    "save_weight_total": 0
+  },
+  "voice_drift": {
+    "substack_reply_rate_this_week": 0.0,
+    "rolling_4w_avg": 0.0
+  },
+  "notes": ""
+}
+```
+
+### Log entry template — `~/.claude/attune-actions/YYYY-MM-DD-HHMM-<slug>.md`
+
+Paths in `action_target` use absolute form (`~` expanded). `bucket` is `safe` or `risky`. `action_verb` is one of `create`, `edit`, `draft`, `research`, `refactor`. `magnitude` is `small`, `medium`, or `large`. `observable_by` is a future date by which Sam can judge whether the prediction landed.
+
+```markdown
+---
+timestamp: YYYY-MM-DDTHH:MM:SS-04:00
+slug: <kebab-case-slug>
+bucket: safe
+action_target: ~/.claude/skills/attune-carousel/drafts/<file>.md
+action_verb: create
+metrics_at_decision:
+  money_week: 0
+  pipeline_total: 0
+  save_weight: 0
+  reply_rate: 0.0
+  metrics_stale: false
+prediction:
+  metric: attention
+  direction: up
+  magnitude: small
+  observable_by: YYYY-MM-DD
+executed: true
+outcome_status: pending
+outcome_observed: null
+outcome_notes: null
+---
+
+## Reflection
+(≤300 words — or `Week Zero — no prior ticks.` on first run)
+
+## Action
+**What:** (one-sentence description)
+**Why:** (why this, why now, tied to hypothesis)
+**Predicted effect:** (metric, direction, magnitude, observable by when)
+
+## What was done
+(Safe: diff summary or new-file path. Risky: "Queued — see attune-review-queue.md entry <timestamp>.")
+```
+
+For risky actions: set `bucket: risky`, `executed: false`, and in "What was done" write `Queued — see attune-review-queue.md entry <timestamp>.`
+
+The four Sam-filled outcome fields stay at their default (`pending`, `null`, `null`) — Sam completes them during the weekly Sunday metrics update.
+
+### Review-queue entry template — appended to `~/.claude/attune-review-queue.md`
+
+If the queue file does not exist, create it with `# Attune Review Queue` as the first line, followed by a blank line. Then append:
+
+```markdown
+## <timestamp> — <short description>
+**Bucket:** risky (<reason — e.g. "publishes to audience" | "touches Stripe" | "edits published page">)
+**Proposed by tick:** <log-filename without .md>
+**Action:** <exact action Ultron would take if approved>
+**Predicted effect:** <metric, direction, magnitude, timeframe>
+**Why:** <one-paragraph reasoning>
+**Status:** awaiting-review
+```
+
+Sam reviews and annotates `**Decision:** approved` or `**Decision:** rejected` with one-line rationale. v1 does not read back from the queue.
+
+### Summary template — printed to stdout at end of tick
+
+Exactly three lines, no more, no less. No preamble. No trailing text.
+
+```
+Action: <one line>
+Prediction: <one line>
+Log: ~/.claude/attune-actions/<filename>
+```
+
 ## Operating Discipline
